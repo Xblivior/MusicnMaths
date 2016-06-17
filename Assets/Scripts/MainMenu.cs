@@ -16,4 +16,19 @@ public class MainMenu : MonoBehaviour
 	{
 	
 	}
+
+	public void Competitive ()
+	{
+		SceneManager.LoadScene ("Competitive");
+	}
+
+	public void Tutorials()
+	{
+		SceneManager.LoadScene ("Tutorial");
+	}
+
+	public void Credits()
+	{
+		SceneManager.LoadScene("Credits");
+	}
 }
