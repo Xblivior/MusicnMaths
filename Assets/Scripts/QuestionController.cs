@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class QuestionController : MonoBehaviour 
 {
+	public Text score;
 	public Text question;
+	public Text[] answers;
 
 	int a;
 	int b;
@@ -53,7 +55,7 @@ public class QuestionController : MonoBehaviour
 		a = Random.Range(0,11);
 		b = Random.Range(0,11);
 
-		question.text = a + "+" + b; 
+		question.text = a + " + " + b; 
 
 	}
 
@@ -62,7 +64,7 @@ public class QuestionController : MonoBehaviour
 		a = Random.Range(0,11);
 		b = Random.Range(0,11);
 
-		question.text = a + "-" + b; 
+		question.text = a + " - " + b; 
 	}
 
 	void Multiplication()
@@ -70,14 +72,20 @@ public class QuestionController : MonoBehaviour
 		a = Random.Range(0,11);
 		b = Random.Range(0,11);
 
-		question.text = a + "*" + b; 
+		question.text = a + " * " + b; 
 	}
 
+	//NOTE: need to figure out a better way to do division
 	void Division()
 	{
 		a = Random.Range(0,11);
 		b = Random.Range(0,11);
 
-		question.text = a + "/" + b; 
+		question.text = a + " / " + b; 
+	}
+
+	public void CheckAnswer()
+	{
+		
 	}
 }
