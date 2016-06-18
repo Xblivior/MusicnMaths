@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class QuestionController : MonoBehaviour 
 {
+	public Text question;
+
 	int a;
 	int b;
 	int c;
@@ -24,45 +26,58 @@ public class QuestionController : MonoBehaviour
 	{
 		int rNum = Random.Range (0,4);
 
-		if (rNum = 0)
+		if (rNum == 0)
 		{
 			Addition();
 		}
 
-		else if (rNum = 1)
+		else if (rNum == 1)
 		{
 			Subtraction();
 		}
 
-		else if (rNum = 2)
+		else if (rNum == 2)
 		{
 			Multiplication();
 		}
 
-		else (rNum = 3)
+		else if (rNum == 3)
 		{
-			Division();
+			Division(); 
 		}
 
 	}
 
 	void Addition()
 	{
-		
+		a = Random.Range(0,11);
+		b = Random.Range(0,11);
+
+		question.text = a + "+" + b; 
+
 	}
 
 	void Subtraction()
 	{
+		a = Random.Range(0,11);
+		b = Random.Range(0,11);
 
+		question.text = a + "-" + b; 
 	}
 
 	void Multiplication()
 	{
+		a = Random.Range(0,11);
+		b = Random.Range(0,11);
 
+		question.text = a + "*" + b; 
 	}
 
 	void Division()
 	{
+		a = Random.Range(0,11);
+		b = Random.Range(0,11);
 
+		question.text = a + "/" + b; 
 	}
 }
