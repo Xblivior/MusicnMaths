@@ -3,9 +3,6 @@ using System.Collections;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
 
-using System.IO;
-using System.Xml;
-
 public class AnalyticsTest : MonoBehaviour 
 {
 	//IDictionary<string, object> startData = new Dictionary<string, object>();
