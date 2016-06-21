@@ -137,7 +137,7 @@ public class QuestionController : MonoBehaviour
 		{
 			int d = c + Random.Range (-10, 11);
 
-			if (d == c || d == possibleAnswers.Exists(int.Equals(d)))
+			if (d == c)
 			{
 				
 			}
