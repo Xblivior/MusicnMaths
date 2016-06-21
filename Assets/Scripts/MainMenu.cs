@@ -27,6 +27,11 @@ public class MainMenu : MonoBehaviour
 		SceneManager.LoadScene ("Tutorial");
 	}
 
+	public void Practice()
+	{
+		SceneManager.LoadScene("Practice");
+	}
+
 	public void Credits()
 	{
 		SceneManager.LoadScene("Credits");
