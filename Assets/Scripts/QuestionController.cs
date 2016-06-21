@@ -69,13 +69,19 @@ public class QuestionController : MonoBehaviour
 		CreateAnswers ();
 
 	}
-
-	//NOTE: finish it
+		
 	void Subtraction()
 	{
-		a = Random.Range(0,11);
+		//make a random answer
+		c = Random.Range (1, 25);
+
+		//make random b
 		b = Random.Range(0,11);
 
+		//then a = c+b
+		a = c + b;
+
+		//show text
 		question.text = a + " - " + b; 
 
 		//play CreateAnswer
@@ -86,11 +92,16 @@ public class QuestionController : MonoBehaviour
 	//NOTE: finish it
 	void Multiplication()
 	{
+		//make an answer
 		c = Random.Range (1, 100);
 
-		a = Random.Range(1,11);
+		//make random b
 		b = Random.Range(1,11);
 
+		//then a = c/b
+		a = c / b;
+
+		//show text
 		question.text = a + " * " + b; 
 
 		//play CreateAnswer
@@ -119,8 +130,26 @@ public class QuestionController : MonoBehaviour
 	public void CreateAnswers()
 	{
 		//make a list possibleAnswer = new list {answer(c), 10 +/- of answer(c),} has 4 elements (1 for each button)
-		List<int> possibleAnswers = new List<int>(){c, c+Random.Range(-10,11), c+Random.Range(-10,11), c+Random.Range(-10,11)}; 
+		//{c, c+Random.Range(-10,11), c+Random.Range(-10,11), c+Random.Range(-10,11)}
+		List<int> possibleAnswers = new List<int>(); 
+		possibleAnswers.Add (c);
+		for(int i = 1; i < 4; i++)
+		{
+			int d = c + Random.Range (-10, 11);
 
+			if (d == c)
+			{
+				
+			}
+
+			else
+			{
+				possibleAnswers.Add (d); 
+			}
+
+		}
+
+	
 		//for each answer in answer[]
 		foreach(Text answer in answers)
 		{
