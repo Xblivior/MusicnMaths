@@ -25,28 +25,34 @@ public class QuestionController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		//show score
 		scoreText.text = "Score: " + currentScore;
 	}
 
 	public void RandomType()
 	{
+		//make random number
 		int rNum = Random.Range (0,4);
 
+		//if 0 then do addition
 		if (rNum == 0)
 		{
 			Addition();
 		}
 
+		//if 1 do subtraction
 		else if (rNum == 1)
 		{
 			Subtraction();
 		}
 
+		//if 2 do multiplication
 		else if (rNum == 2)
 		{
 			Multiplication();
 		}
 
+		//if 3 do division
 		else if (rNum == 3)
 		{
 			Division(); 
@@ -132,19 +138,26 @@ public class QuestionController : MonoBehaviour
 
 	public void CreateAnswers()
 	{
-		//make a list possibleAnswer = new list {answer(c), 10 +/- of answer(c),} has 4 elements (1 for each button)
-		//{c, c+Random.Range(-10,11), c+Random.Range(-10,11), c+Random.Range(-10,11)}
+		//make a list with ints called possibleAnswers
 		List<int> possibleAnswers = new List<int>(); 
+
+		//add answer(c) into list
 		possibleAnswers.Add (c);
+
+		//for (int i (start at 1); while i < 4; add 1)
 		for(int i = 1; i < 4; i++)
 		{
+			//create d = +/- 10 of answer(c)
 			int d = c + Random.Range (-10, 11);
 
+			//while list contains d
 			while (possibleAnswers.Contains (d))
 			{
+				//add 1 to d
 				d += 1;
 			}
 
+			//then add d
 			possibleAnswers.Add (d); 
 		}
 
@@ -165,15 +178,22 @@ public class QuestionController : MonoBehaviour
 
 	public void CheckAnswer(Text givenAnswer)
 	{
+		//if (c equals button text)
 		if (c == int.Parse (givenAnswer.text)) 
 		{
+			//add 5 scores
 			currentScore += 5;
+
+			//next question
 			RandomType ();
 		}
 
 		else
 		{
+			//take 5 scores
 			currentScore -= 5;
+
+			//next question
 			RandomType ();
 		}
 	}
