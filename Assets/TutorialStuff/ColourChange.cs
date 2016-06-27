@@ -14,12 +14,19 @@ public class ColourChange : MonoBehaviour
 
 	float timer = 2.5f;
 
+	public GameObject target;
+
+
 	// Use this for initialization
 	void Start () 
 	{
 		currentR = mat.color.r;
 		currentG = mat.color.g;
 		currentB = mat.color.b;
+
+		target = GameObject.FindGameObjectWithTag ("LookAt");
+		Vector3 lookAt = target.transform.position;
+		transform.LookAt (lookAt);
 	}
 	
 	// Update is called once per frame
