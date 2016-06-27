@@ -17,6 +17,7 @@ public class Spectrum : MonoBehaviour
 	public GameObject cameraPivot;
 
 	public GameObject cubeParent;
+	public GameObject cubeParentLookAt;
 
 
 	// Use this for initialization
@@ -39,6 +40,8 @@ public class Spectrum : MonoBehaviour
 
 		}
 
+		Vector3 parentLookAt = cubeParentLookAt.transform.position;
+		cubeParent.transform.LookAt (parentLookAt);
 		cubeArray = GameObject.FindGameObjectsWithTag("Cube");
 		cubeArrayT = GameObject.FindGameObjectsWithTag("CubeT");
 	}
