@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class QuestionController : MonoBehaviour 
 {
-	public Text score;
+	int currentScore = 0;
+	public Text scoreText;
 	public Text question;
 	public Text[] answers;
+
+	//float[] timeBetweenQs;
 
 	int a;
 	int b;
@@ -16,13 +19,13 @@ public class QuestionController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-	
+		RandomType ();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-
+		scoreText.text = "Score: " + currentScore;
 	}
 
 	public void RandomType()
@@ -92,14 +95,14 @@ public class QuestionController : MonoBehaviour
 	//NOTE: finish it
 	void Multiplication()
 	{
-		//make an answer
-		c = Random.Range (1, 100);
+		//make random a
+		a = Random.Range (1, 11);
 
 		//make random b
-		b = Random.Range(1,11);
+		b = Random.Range(1, 11);
 
-		//then a = c/b
-		a = c / b;
+		//then c = a*b
+		c = a * b;
 
 		//show text
 		question.text = a + " * " + b; 
@@ -137,16 +140,12 @@ public class QuestionController : MonoBehaviour
 		{
 			int d = c + Random.Range (-10, 11);
 
-			if (d == c)
+			while (possibleAnswers.Contains (d))
 			{
-				
+				d += 1;
 			}
 
-			else
-			{
-				possibleAnswers.Add (d); 
-			}
-
+			possibleAnswers.Add (d); 
 		}
 
 	
@@ -164,8 +163,18 @@ public class QuestionController : MonoBehaviour
 		}
 	}
 
-	public void CheckAnswer()
+	public void CheckAnswer(Text givenAnswer)
 	{
-		
+		if (c == int.Parse (givenAnswer.text)) 
+		{
+			currentScore += 5;
+			RandomType ();
+		}
+
+		else
+		{
+			currentScore -= 5;
+			RandomType ();
+		}
 	}
 }
