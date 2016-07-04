@@ -7,9 +7,9 @@ public class CompetitiveController : MonoBehaviour
 {
 	public Canvas pauseMenu;
 	public Canvas normUI;
+	public Text overallTimerT;
 
 	float overallTimer;
-	float timeLeft;
 
 	// Use this for initialization
 	void Start () 
@@ -21,7 +21,14 @@ public class CompetitiveController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-	
+		//start overall timer
+		overallTimer += Time.deltaTime;
+
+		//round to nearest sec
+		int secondsO = Mathf.RoundToInt (overallTimer);
+
+		//show timer text
+		overallTimerT.text = "Survived Time: " + secondsO + "sec";
 	}
 
 	public void Pause()
@@ -59,6 +66,11 @@ public class CompetitiveController : MonoBehaviour
 
 		//go to menu
 		SceneManager.LoadScene ("Menu");
+	}
+
+	public void GameOver()
+	{
+		
 	}
 		
 }

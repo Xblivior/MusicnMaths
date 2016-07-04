@@ -9,6 +9,9 @@ public class QuestionController : MonoBehaviour
 	public Text scoreText;
 	public Text question;
 	public Text[] answers;
+	public Text timeLeftT; 
+
+	float timeLeft = 30f;
 
 	//float[] timeBetweenQs;
 
@@ -27,6 +30,21 @@ public class QuestionController : MonoBehaviour
 	{
 		//show score
 		scoreText.text = "Score: " + currentScore;
+
+		//start timer
+		timeLeft -= Time.deltaTime;
+
+		//timer to nearest second
+		int seconds = Mathf.RoundToInt (timeLeft);
+
+		//if timer is 0 go to gameover
+		if (timeLeft <= 0f)
+		{
+			GetComponent<CompetitiveController> ().GameOver ();
+		}
+
+		//show timer
+		timeLeftT.text = "Time Left: " + seconds + "sec";
 	}
 
 	public void RandomType()
@@ -184,6 +202,9 @@ public class QuestionController : MonoBehaviour
 			//add 5 scores
 			currentScore += 5;
 
+			//add extra time
+			timeLeft += 3f;
+
 			//next question
 			RandomType ();
 		}
@@ -192,6 +213,9 @@ public class QuestionController : MonoBehaviour
 		{
 			//take 5 scores
 			currentScore -= 5;
+
+			//lose extra time
+			timeLeft -= 3f;
 
 			//next question
 			RandomType ();
