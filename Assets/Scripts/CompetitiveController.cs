@@ -71,6 +71,7 @@ public class CompetitiveController : MonoBehaviour
 	public void GameOver()
 	{
 		
+
 	}
 		
 }

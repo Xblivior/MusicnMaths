@@ -73,13 +73,13 @@ public class Spectrum : MonoBehaviour
 			}
 		}
 
-//		float[] spectrumT = AudioListener.GetSpectrumData(1024, 0, FFTWindow.Hamming);
-//		for (int iT = 0; iT < numberOfObjectsT; iT++)
-//		{
-//			Vector3 previousScaleT = cubeArrayT[iT].transform.localScale;
-//			previousScaleT.z = Mathf.Lerp(previousScaleT.z, spectrumT[iT] * 30, Time.deltaTime * 30);
-//			cubeArrayT[iT].transform.localScale = previousScaleT;
-//		}
+		float[] spectrumT = AudioListener.GetSpectrumData(1024, 0, FFTWindow.Hamming);
+		for (int iT = 0; iT < numberOfObjectsT; iT++)
+		{
+			Vector3 previousScaleT = cubeArrayT[iT].transform.localScale;
+			previousScaleT.z = Mathf.Lerp(previousScaleT.z, spectrumT[iT] * 30, Time.deltaTime * 30);
+			cubeArrayT[iT].transform.localScale = previousScaleT;
+		}
 
 		//get camera to rotate around pivote for effect
 		cameraPivot.transform.Rotate (0, 0.2f, 0);
