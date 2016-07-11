@@ -8,6 +8,11 @@ public class CompetitiveController : MonoBehaviour
 	public Canvas pauseMenu;
 	public Canvas normUI;
 	public Text overallTimerT;
+	//public Text livesT;
+
+	public float livesTimer = 7f;
+	public int lives = 3;
+	public Image[] life;
 
 	float overallTimer;
 
@@ -15,6 +20,7 @@ public class CompetitiveController : MonoBehaviour
 	void Start () 
 	{
 		pauseMenu.enabled = false;
+
 
 	}
 	
@@ -29,6 +35,14 @@ public class CompetitiveController : MonoBehaviour
 
 		//show timer text
 		overallTimerT.text = "Survived Time: " + secondsO + "sec";
+
+		LivesTimer ();
+
+		if (lives <= 0)
+		{
+			print ("GameOver");
+		}
+
 	}
 
 	public void Pause()
@@ -68,10 +82,24 @@ public class CompetitiveController : MonoBehaviour
 		SceneManager.LoadScene ("Menu");
 	}
 
-	public void GameOver()
+	public void LivesTimer()
 	{
-		
+		livesTimer -= Time.deltaTime;
 
+		if (livesTimer <= 0f)
+		{
+
+			TakeLife ();
+			livesTimer = 5f;
+
+		}
+
+	}
+
+	public void TakeLife()
+	{
+		life [lives - 1].color = new Color(0f,0f,0f,0f);
+		lives -= 1;
 	}
 		
 }

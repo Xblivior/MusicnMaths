@@ -64,7 +64,7 @@ public class Spectrum : MonoBehaviour
 			Vector3 previousPosition = cubeArray[i].transform.position;
 
 			//                                                   (how far out of the middle they spawn)                                         (how much they jump to music)
-			previousPosition = Vector3.Lerp(previousPosition, (cameraPivot.transform.position + -cubeArray[i].transform.forward * 10) + -cubeArray[i].transform.forward * spectrum[i] * 20, Time.deltaTime * 30);
+			previousPosition = Vector3.Lerp(previousPosition, (cameraPivot.transform.position + -cubeArray[i].transform.forward * 10) + -cubeArray[i].transform.forward * spectrum[i] * 20, Time.unscaledDeltaTime * 30);
 			cubeArray[i].transform.position = previousPosition;
 			GetComponent<LineRenderer> ().SetPosition (i, previousPosition);
 			if (i == cubeArray.Length - 1)
@@ -77,7 +77,7 @@ public class Spectrum : MonoBehaviour
 		for (int iT = 0; iT < numberOfObjectsT; iT++)
 		{
 			Vector3 previousScaleT = cubeArrayT[iT].transform.localScale;
-			previousScaleT.z = Mathf.Lerp(previousScaleT.z, spectrumT[iT] * 30, Time.deltaTime * 30);
+			previousScaleT.z = Mathf.Lerp(previousScaleT.z, spectrumT[iT] * 30, Time.unscaledDeltaTime * 30);
 			cubeArrayT[iT].transform.localScale = previousScaleT;
 		}
 

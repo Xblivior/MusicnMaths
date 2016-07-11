@@ -30,18 +30,18 @@ public class QuestionController : MonoBehaviour
 	{
 		//show score
 		scoreText.text = "Score: " + currentScore;
-
+	
 		//start timer
-		timeLeft -= Time.deltaTime;
+//		timeLeft -= Time.deltaTime;
 
 		//timer to nearest second
 		int seconds = Mathf.RoundToInt (timeLeft);
 
 		//if timer is 0 go to gameover
-		if (timeLeft <= 0f)
-		{
-			GetComponent<CompetitiveController> ().GameOver ();
-		}
+//		if (timeLeft <= 0f)
+//		{
+//			GetComponent<CompetitiveController> ().GameOver ();
+//		}
 
 		//show timer
 		timeLeftT.text = "Time Left: " + seconds + "sec";
@@ -81,7 +81,7 @@ public class QuestionController : MonoBehaviour
 	void Addition()
 	{
 		//make an answer
-		c = Random.Range (1, 25);
+		c = Random.Range (1, 26);
 
 		//make a random a 
 		a = Random.Range(1,26);
@@ -196,6 +196,7 @@ public class QuestionController : MonoBehaviour
 
 	public void CheckAnswer(Text givenAnswer)
 	{
+		
 		//if (c equals button text)
 		if (c == int.Parse (givenAnswer.text)) 
 		{
@@ -203,7 +204,10 @@ public class QuestionController : MonoBehaviour
 			currentScore += 5;
 
 			//add extra time
-			timeLeft += 3f;
+//			timeLeft += 3f;
+
+			//add lives time
+			GetComponent<CompetitiveController> ().livesTimer = 5f;
 
 			//next question
 			RandomType ();
@@ -215,7 +219,10 @@ public class QuestionController : MonoBehaviour
 			currentScore -= 5;
 
 			//lose extra time
-			timeLeft -= 3f;
+//			timeLeft -= 3f;
+
+			//lose a live
+			GetComponent<CompetitiveController> ().TakeLife();
 
 			//next question
 			RandomType ();
