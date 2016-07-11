@@ -84,7 +84,7 @@ public class QuestionController : MonoBehaviour
 		c = Random.Range (1, 26);
 
 		//make a random a 
-		a = Random.Range(1,26);
+		a = Random.Range(1,c);
 
 		//then b = c-a
 		b = c-a;
