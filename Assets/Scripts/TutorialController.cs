@@ -13,8 +13,10 @@ public class TutorialController : MonoBehaviour
 
 	public GameObject[] subtractionImages;
 	public GameObject[] multiImages;
+	public GameObject[] divImages;
 
 	int multiNext = 0;
+	int divNext = 0;
 
 	// Use this for initialization
 	void Start () 
@@ -25,13 +27,20 @@ public class TutorialController : MonoBehaviour
 		multiCanvas.enabled = false;
 		divCanvas.enabled = false;
 
-		//multi images are diables 
+		//multi images are disabled 
 		multiImages[0].SetActive(false);
 		multiImages[1].SetActive(false);
 		multiImages[2].SetActive(false);
 		multiImages[3].SetActive(false);
 		multiImages[4].SetActive(false);
 		multiImages[5].SetActive(false);
+
+		//division images are disabled
+		divImages[0].SetActive(false);
+		divImages[1].SetActive(false);
+		divImages[2].SetActive(false);
+		divImages[3].SetActive(false);
+		divImages[4].SetActive(false);
 
 	}
 	
@@ -109,6 +118,20 @@ public class TutorialController : MonoBehaviour
 		adCanvas.enabled = false;
 		subCanvas.enabled = false;
 		multiCanvas.enabled = false;
+	}
+
+	public void DivisionNext()
+	{
+		if (divNext == 0)
+		{
+			divImages[0].SetActive(true);
+			divImages[1].SetActive(true);
+			divImages[2].SetActive(true);
+			divImages[3].SetActive(true);
+			divImages[4].SetActive(true);
+
+		}
+			
 	}
 
 	public void Menu()
