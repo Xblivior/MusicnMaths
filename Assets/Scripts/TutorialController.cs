@@ -11,15 +11,28 @@ public class TutorialController : MonoBehaviour
 	public Canvas multiCanvas;
 	public Canvas divCanvas;
 
-	public Image[] subtractionImages;
+	public GameObject[] subtractionImages;
+	public GameObject[] multiImages;
+
+	int multiNext = 0;
 
 	// Use this for initialization
 	void Start () 
 	{
+		//tutorial canavas disabled
 		adCanvas.enabled = false;
 		subCanvas.enabled = false;
 		multiCanvas.enabled = false;
 		divCanvas.enabled = false;
+
+		//multi images are diables 
+		multiImages[0].SetActive(false);
+		multiImages[1].SetActive(false);
+		multiImages[2].SetActive(false);
+		multiImages[3].SetActive(false);
+		multiImages[4].SetActive(false);
+		multiImages[5].SetActive(false);
+
 	}
 	
 	// Update is called once per frame
@@ -52,20 +65,39 @@ public class TutorialController : MonoBehaviour
 
 	public void SubtractionNext()
 	{
-		subtractionImages[2].enabled = false;
-		subtractionImages[3].enabled = false;
-		subtractionImages[4].enabled = false;
+		subtractionImages[2].SetActive(false);
+		subtractionImages[3].SetActive(false);
+		subtractionImages[4].SetActive(false);
 	}
 
 	public void MultiplicationTute()
 	{
 		//make mulitplication tute active
 		multiCanvas.enabled = true;
+		multiImages[0].SetActive(true);
+		multiImages[1].SetActive(true);
 
 		//make other canvases false
 		adCanvas.enabled = false;
 		subCanvas.enabled = false;
 		divCanvas.enabled = false;
+	}
+
+	public void MultiplicationNext()
+	{
+		if (multiNext == 0)
+		{
+			multiImages[2].SetActive(true);
+			multiImages[3].SetActive(true);
+			multiNext ++;
+		}
+
+		else if (multiNext == 1)
+		{
+			multiImages[4].SetActive(true);
+			multiImages[5].SetActive(true);
+			multiNext ++;
+		}
 	}
 
 	public void DivisionTute()
