@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class TutorialController : MonoBehaviour 
 {
@@ -8,6 +10,8 @@ public class TutorialController : MonoBehaviour
 	public Canvas subCanvas;
 	public Canvas multiCanvas;
 	public Canvas divCanvas;
+
+	public Image[] subtractionImages;
 
 	// Use this for initialization
 	void Start () 
@@ -46,6 +50,13 @@ public class TutorialController : MonoBehaviour
 		divCanvas.enabled = false;
 	}
 
+	public void SubtractionNext()
+	{
+		subtractionImages[2].enabled = false;
+		subtractionImages[3].enabled = false;
+		subtractionImages[4].enabled = false;
+	}
+
 	public void MultiplicationTute()
 	{
 		//make mulitplication tute active
@@ -66,5 +77,10 @@ public class TutorialController : MonoBehaviour
 		adCanvas.enabled = false;
 		subCanvas.enabled = false;
 		multiCanvas.enabled = false;
+	}
+
+	public void Menu()
+	{
+		SceneManager.LoadScene ("Menu");
 	}
 }
