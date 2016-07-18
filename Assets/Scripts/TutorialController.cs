@@ -116,6 +116,21 @@ public class TutorialController : MonoBehaviour
 			multiImages[4].SetActive(true);
 			multiImages[5].SetActive(true);
 
+			//add 1
+			multiNext ++;
+		}
+
+		//else if its 2
+		else if (multiNext == 2)
+		{
+			//hide images 
+			multiImages[2].SetActive(false);
+			multiImages[3].SetActive(false);
+			multiImages[4].SetActive(false);
+			multiImages[5].SetActive(false);
+
+			//reset mnext
+			multiNext = 0;
 		}
 	}
 
@@ -142,6 +157,23 @@ public class TutorialController : MonoBehaviour
 			divImages[3].SetActive(true);
 			divImages[4].SetActive(true);
 
+			//add 1 to dnext
+			divNext ++;
+
+		}
+
+		//else if dnext is 1
+		else if (divNext == 1)
+		{
+			//show splits and numbers
+			divImages[0].SetActive(false);
+			divImages[1].SetActive(false);
+			divImages[2].SetActive(false);
+			divImages[3].SetActive(false);
+			divImages[4].SetActive(false);
+
+			//reset dnext
+			divNext = 0;
 		}
 			
 	}
