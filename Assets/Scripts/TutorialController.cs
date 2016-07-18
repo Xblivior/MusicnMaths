@@ -5,16 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class TutorialController : MonoBehaviour 
 {
+	//canvases
 	public Canvas mainCanvas;
 	public Canvas adCanvas;
 	public Canvas subCanvas;
 	public Canvas multiCanvas;
 	public Canvas divCanvas;
 
+	//tute images
 	public GameObject[] subtractionImages;
 	public GameObject[] multiImages;
 	public GameObject[] divImages;
 
+	//numbers used to go to next part of tutes
 	int multiNext = 0;
 	int divNext = 0;
 
@@ -74,6 +77,7 @@ public class TutorialController : MonoBehaviour
 
 	public void SubtractionNext()
 	{
+		//hide boxes 3-5
 		subtractionImages[2].SetActive(false);
 		subtractionImages[3].SetActive(false);
 		subtractionImages[4].SetActive(false);
@@ -94,18 +98,24 @@ public class TutorialController : MonoBehaviour
 
 	public void MultiplicationNext()
 	{
+		//if mnext is 0
 		if (multiNext == 0)
 		{
+			//show next 2 boxes
 			multiImages[2].SetActive(true);
 			multiImages[3].SetActive(true);
+
+			//add 1 
 			multiNext ++;
 		}
 
+		//else if its 1
 		else if (multiNext == 1)
 		{
+			//show the last 2 boxes
 			multiImages[4].SetActive(true);
 			multiImages[5].SetActive(true);
-			multiNext ++;
+
 		}
 	}
 
@@ -122,8 +132,10 @@ public class TutorialController : MonoBehaviour
 
 	public void DivisionNext()
 	{
+		//if dnext is 0
 		if (divNext == 0)
 		{
+			//show splits and numbers
 			divImages[0].SetActive(true);
 			divImages[1].SetActive(true);
 			divImages[2].SetActive(true);
@@ -136,6 +148,7 @@ public class TutorialController : MonoBehaviour
 
 	public void Menu()
 	{
+		//load the main menu
 		SceneManager.LoadScene ("Menu");
 	}
 }
