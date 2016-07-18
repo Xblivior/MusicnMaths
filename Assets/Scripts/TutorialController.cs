@@ -18,6 +18,7 @@ public class TutorialController : MonoBehaviour
 	public GameObject[] divImages;
 
 	//numbers used to go to next part of tutes
+	int subNext = 0;
 	int multiNext = 0;
 	int divNext = 0;
 
@@ -77,10 +78,29 @@ public class TutorialController : MonoBehaviour
 
 	public void SubtractionNext()
 	{
-		//hide boxes 3-5
-		subtractionImages[2].SetActive(false);
-		subtractionImages[3].SetActive(false);
-		subtractionImages[4].SetActive(false);
+		if (subNext == 0)
+		{
+			//hide boxes 3-5
+			subtractionImages [2].SetActive (false);
+			subtractionImages [3].SetActive (false);
+			subtractionImages [4].SetActive (false);
+
+			//add 1
+			subNext++;
+		}
+
+		//else if subnext is 1
+		else if (subNext == 1)
+		{
+			//show boxes 3-5
+			subtractionImages [2].SetActive (true);
+			subtractionImages [3].SetActive (true);
+			subtractionImages [4].SetActive (true);
+
+			//reset subnext
+			subNext = 0;
+
+		}
 	}
 
 	public void MultiplicationTute()
