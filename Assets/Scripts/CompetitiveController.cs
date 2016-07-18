@@ -10,7 +10,7 @@ public class CompetitiveController : MonoBehaviour
 	public Text overallTimerT;
 	//public Text livesT;
 
-	public float livesTimer = 7f;
+	public float livesTimer = 10f;
 	public int lives = 3;
 	public Image[] life;
 
@@ -40,7 +40,7 @@ public class CompetitiveController : MonoBehaviour
 
 		if (lives <= 0)
 		{
-			print ("GameOver");
+			GameOver ();
 		}
 
 	}
@@ -90,7 +90,7 @@ public class CompetitiveController : MonoBehaviour
 		{
 
 			TakeLife ();
-			livesTimer = 5f;
+			livesTimer = 7.5f;
 
 		}
 
@@ -100,6 +100,11 @@ public class CompetitiveController : MonoBehaviour
 	{
 		life [lives - 1].color = new Color(0f,0f,0f,0f);
 		lives -= 1;
+	}
+
+	public void GameOver()
+	{
+		SceneManager.LoadScene ("Menu");
 	}
 		
 }

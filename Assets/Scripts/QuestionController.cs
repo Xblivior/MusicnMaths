@@ -44,7 +44,7 @@ public class QuestionController : MonoBehaviour
 //		}
 
 		//show timer
-		timeLeftT.text = "Time Left: " + seconds + "sec";
+//		timeLeftT.text = "Time Left: " + seconds + "sec";
 	}
 
 	public void RandomType()
@@ -81,10 +81,10 @@ public class QuestionController : MonoBehaviour
 	void Addition()
 	{
 		//make an answer
-		c = Random.Range (1, 26);
+		c = Random.Range (1, 101);
 
 		//make a random a 
-		a = Random.Range(1,c);
+		a = Random.Range(1, c);
 
 		//then b = c-a
 		b = c-a;
@@ -100,10 +100,10 @@ public class QuestionController : MonoBehaviour
 	void Subtraction()
 	{
 		//make a random answer
-		c = Random.Range (1, 25);
+		c = Random.Range (1, 101);
 
 		//make random b
-		b = Random.Range(0,11);
+		b = Random.Range(0, 101);
 
 		//then a = c+b
 		a = c + b;
