@@ -100,10 +100,10 @@ public class QuestionController : MonoBehaviour
 	void Subtraction()
 	{
 		//make a random answer
-		c = Random.Range (1, 101);
+		c = Random.Range (1, 51);
 
 		//make random b
-		b = Random.Range(0, 101);
+		b = Random.Range(0, c);
 
 		//then a = c+b
 		a = c + b;

@@ -90,7 +90,7 @@ public class CompetitiveController : MonoBehaviour
 		{
 
 			TakeLife ();
-			livesTimer = 7.5f;
+			livesTimer = 10f;
 
 		}
 
