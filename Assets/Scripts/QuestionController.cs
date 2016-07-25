@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class QuestionController : MonoBehaviour 
 {
-	int currentScore = 0;
+	public int currentScore = 0;
 	public Text scoreText;
 	public Text question;
 	public Text[] answers;

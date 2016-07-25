@@ -104,7 +104,8 @@ public class CompetitiveController : MonoBehaviour
 
 	public void GameOver()
 	{
-		SceneManager.LoadScene ("Menu");
+		PlayerPrefs.SetInt ("RecentScore", GetComponent<QuestionController> ().currentScore);
+		SceneManager.LoadScene ("LoseScreen");
 	}
 		
 }
