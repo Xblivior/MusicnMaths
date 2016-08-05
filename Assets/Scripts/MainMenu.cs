@@ -37,4 +37,13 @@ public class MainMenu : MonoBehaviour
 		SceneManager.LoadScene("Credits");
 	}
 
+	public void Highscore()
+	{
+		SceneManager.LoadScene("Highscore");
+	}
+
+	public void Menu()
+	{
+		SceneManager.LoadScene("Menu");
+	}
 }

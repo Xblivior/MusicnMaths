@@ -90,7 +90,7 @@ public class CompetitiveController : MonoBehaviour
 		{
 
 			TakeLife ();
-			livesTimer = 7.5f;
+			livesTimer = 10f;
 
 		}
 
@@ -104,7 +104,8 @@ public class CompetitiveController : MonoBehaviour
 
 	public void GameOver()
 	{
-		SceneManager.LoadScene ("Menu");
+		PlayerPrefs.SetInt ("RecentScore", GetComponent<QuestionController> ().currentScore);
+		SceneManager.LoadScene ("LoseScreen");
 	}
 		
 }
