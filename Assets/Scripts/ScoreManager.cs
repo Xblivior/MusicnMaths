@@ -111,6 +111,18 @@ public class ScoreManager : MonoBehaviour
 		}
 	}
 
+	public void ClearScores()
+	{
+		PlayerPrefs.DeleteAll ();
+		myHighScores.Clear ();
+
+		for (int i = 0; i < playerNames.Count; i++)
+		{
+			playerNames[i].text = "NO SCORE";
+			playerScores[i].text = "000";
+		}
+	}
+
 
 }
 

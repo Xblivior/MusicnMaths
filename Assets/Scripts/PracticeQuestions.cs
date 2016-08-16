@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
-public class QuestionController : MonoBehaviour 
+public class PracticeQuestions : MonoBehaviour 
 {
 	public int currentScore = 0;
 	public Text scoreText;
 	public Text question;
 	public Text[] answers;
-	public Text timeLeftT; 
 
-	float timeLeft = 30f;
+	public Canvas pauseMenu;
+	public Canvas normUI;
 
 	//float[] timeBetweenQs;
 
@@ -23,28 +24,15 @@ public class QuestionController : MonoBehaviour
 	void Start () 
 	{
 		RandomType ();
+		pauseMenu.enabled = false;
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
 		//show score
 		scoreText.text = "Score: " + currentScore;
-	
-		//start timer
-//		timeLeft -= Time.deltaTime;
 
-		//timer to nearest second
-		int seconds = Mathf.RoundToInt (timeLeft);
-
-		//if timer is 0 go to gameover
-//		if (timeLeft <= 0f)
-//		{
-//			GetComponent<CompetitiveController> ().GameOver ();
-//		}
-
-		//show timer
-//		timeLeftT.text = "Time Left: " + seconds + "sec";
 	}
 
 	public void RandomType()
@@ -81,7 +69,7 @@ public class QuestionController : MonoBehaviour
 	void Addition()
 	{
 		//make an answer
-		c = Random.Range (1, 25);
+		c = Random.Range (1, 26);
 
 		//make a random a 
 		a = Random.Range(1, c);
@@ -96,11 +84,11 @@ public class QuestionController : MonoBehaviour
 		CreateAnswers ();
 
 	}
-		
+
 	void Subtraction()
 	{
 		//make a random answer
-		c = Random.Range (1, 25);
+		c = Random.Range (1, 26);
 
 		//make random b
 		b = Random.Range(0, c);
@@ -179,7 +167,7 @@ public class QuestionController : MonoBehaviour
 			possibleAnswers.Add (d); 
 		}
 
-	
+
 		//for each answer in answer[]
 		foreach(Text answer in answers)
 		{
@@ -196,18 +184,12 @@ public class QuestionController : MonoBehaviour
 
 	public void CheckAnswer(Text givenAnswer)
 	{
-		
+
 		//if (c equals button text)
 		if (c == int.Parse (givenAnswer.text)) 
 		{
 			//add 5 scores
 			currentScore += 5;
-
-			//add extra time
-//			timeLeft += 3f;
-
-			//add lives time
-			GetComponent<CompetitiveController> ().livesTimer = 7.5f;
 
 			//next question
 			RandomType ();
@@ -218,14 +200,43 @@ public class QuestionController : MonoBehaviour
 			//take 5 scores
 			currentScore -= 5;
 
-			//lose extra time
-//			timeLeft -= 3f;
-
-			//lose a live
-			GetComponent<CompetitiveController> ().TakeLife();
-
 			//next question
 			RandomType ();
 		}
 	}
+
+	public void Pause()
+	{
+		//pause time
+		Time.timeScale = 0.0f;
+
+		//enable pause menu
+		pauseMenu.enabled = true;
+
+		//disable normal ui
+		normUI.enabled = false;
+	}
+
+	public void Continue()
+	{
+		//reset time
+		Time.timeScale = 1.0f;
+
+		//enable pause menu
+		pauseMenu.enabled = false;
+
+		//disable normal ui
+		normUI.enabled = true;
+
+	}
+
+	public void Quit()
+	{
+		//reset time
+		Time.timeScale = 1.0f;
+
+		//go to menu
+		SceneManager.LoadScene ("Menu");
+	}
+
 }
