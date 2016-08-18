@@ -13,6 +13,7 @@ public class PracticeQuestions : MonoBehaviour
 
 	public Canvas pauseMenu;
 	public Canvas normUI;
+	public Canvas inputCanvas; 
 
 	//float[] timeBetweenQs;
 
@@ -20,11 +21,28 @@ public class PracticeQuestions : MonoBehaviour
 	int b;
 	int c;
 
+	public int addMax;
+	public int addMin;
+	public int subMax;
+	public int subMin;
+	public int multiMax;
+	public int multiMin;
+
+	public InputField addMaxField;
+	public InputField addMinField;
+	public InputField subMaxField;
+	public InputField subMinField;
+	public InputField multiMaxField;
+	public InputField multiMinField;
+
+
 	// Use this for initialization
 	void Start () 
 	{
-		RandomType ();
+		//RandomType ();
 		pauseMenu.enabled = false;
+		normUI.enabled = false;
+		inputCanvas.enabled = true;
 	}
 
 	// Update is called once per frame
@@ -32,6 +50,21 @@ public class PracticeQuestions : MonoBehaviour
 	{
 		//show score
 		scoreText.text = "Score: " + currentScore;
+
+	}
+
+	public void InputTeacherData()
+	{
+		int.TryParse(addMaxField.text, out addMax);
+		int.TryParse(addMinField.text, out addMin);
+		int.TryParse(subMaxField.text, out subMax);
+		int.TryParse(subMinField.text, out subMin);
+		int.TryParse(multiMaxField.text, out multiMax);
+		int.TryParse(multiMinField.text, out multiMin);
+
+		RandomType();
+		inputCanvas.enabled = false;
+		normUI.enabled = true;
 
 	}
 
@@ -69,7 +102,7 @@ public class PracticeQuestions : MonoBehaviour
 	void Addition()
 	{
 		//make an answer
-		c = Random.Range (1, 26);
+		c = Random.Range (addMin, addMax);
 
 		//make a random a 
 		a = Random.Range(1, c);
@@ -88,7 +121,7 @@ public class PracticeQuestions : MonoBehaviour
 	void Subtraction()
 	{
 		//make a random answer
-		c = Random.Range (1, 26);
+		c = Random.Range (subMin, subMax);
 
 		//make random b
 		b = Random.Range(0, c);
@@ -104,14 +137,13 @@ public class PracticeQuestions : MonoBehaviour
 	}
 
 
-	//NOTE: finish it
 	void Multiplication()
 	{
 		//make random a
-		a = Random.Range (1, 11);
+		a = Random.Range (multiMin, multiMax);
 
 		//make random b
-		b = Random.Range(1, 11);
+		b = Random.Range(multiMin, multiMax);
 
 		//then c = a*b
 		c = a * b;
@@ -238,5 +270,5 @@ public class PracticeQuestions : MonoBehaviour
 		//go to menu
 		SceneManager.LoadScene ("Menu");
 	}
-
+		
 }
