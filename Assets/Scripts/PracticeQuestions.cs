@@ -55,6 +55,7 @@ public class PracticeQuestions : MonoBehaviour
 
 	public void InputTeacherData()
 	{
+		//convert the text in the input field into an int to use for the questions
 		int.TryParse(addMaxField.text, out addMax);
 		int.TryParse(addMinField.text, out addMin);
 		int.TryParse(subMaxField.text, out subMax);
@@ -62,7 +63,10 @@ public class PracticeQuestions : MonoBehaviour
 		int.TryParse(multiMaxField.text, out multiMax);
 		int.TryParse(multiMinField.text, out multiMin);
 
+		//start the question
 		RandomType();
+
+		//turn off input canvas and turn on question canvas
 		inputCanvas.enabled = false;
 		normUI.enabled = true;
 
