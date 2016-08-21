@@ -21,6 +21,7 @@ public class PracticeQuestions : MonoBehaviour
 	int b;
 	int c;
 
+	//mins and maxs
 	public int addMax;
 	public int addMin;
 	public int subMax;
@@ -28,12 +29,18 @@ public class PracticeQuestions : MonoBehaviour
 	public int multiMax;
 	public int multiMin;
 
+	//input fields
 	public InputField addMaxField;
 	public InputField addMinField;
 	public InputField subMaxField;
 	public InputField subMinField;
 	public InputField multiMaxField;
 	public InputField multiMinField;
+
+	//audio effects
+	public AudioSource audio;
+	public AudioClip correctSound;
+	public AudioClip incorrectSound;
 
 
 	// Use this for initialization
@@ -227,6 +234,9 @@ public class PracticeQuestions : MonoBehaviour
 			//add 5 scores
 			currentScore += 5;
 
+			//play correct sound effect
+			audio.PlayOneShot(correctSound);
+
 			//next question
 			RandomType ();
 		}
@@ -235,6 +245,9 @@ public class PracticeQuestions : MonoBehaviour
 		{
 			//take 5 scores
 			currentScore -= 5;
+
+			//play incorrect sound effect
+			audio.PlayOneShot(incorrectSound);
 
 			//next question
 			RandomType ();

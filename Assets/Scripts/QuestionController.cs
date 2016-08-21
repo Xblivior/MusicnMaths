@@ -13,6 +13,10 @@ public class QuestionController : MonoBehaviour
 
 	float timeLeft = 30f;
 
+	public AudioSource audio;
+	public AudioClip correctSound;
+	public AudioClip incorrectSound;
+
 	//float[] timeBetweenQs;
 
 	int a;
@@ -22,7 +26,7 @@ public class QuestionController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		RandomType ();
+		RandomType (); 
 	}
 	
 	// Update is called once per frame
@@ -203,11 +207,11 @@ public class QuestionController : MonoBehaviour
 			//add 5 scores
 			currentScore += 5;
 
-			//add extra time
-//			timeLeft += 3f;
+			//play correct sound effect
+			audio.PlayOneShot(correctSound);
 
 			//add lives time
-			GetComponent<CompetitiveController> ().livesTimer = 7.5f;
+			GetComponent<CompetitiveController> ().livesTimer = 10f;
 
 			//next question
 			RandomType ();
@@ -218,8 +222,8 @@ public class QuestionController : MonoBehaviour
 			//take 5 scores
 			currentScore -= 5;
 
-			//lose extra time
-//			timeLeft -= 3f;
+			//play incorrect sound effect
+			audio.PlayOneShot(incorrectSound);
 
 			//lose a live
 			GetComponent<CompetitiveController> ().TakeLife();

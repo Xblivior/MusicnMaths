@@ -13,6 +13,7 @@ public class CompetitiveController : MonoBehaviour
 	public float livesTimer = 10f;
 	public int lives = 3;
 	public Image[] life;
+	public Slider timerSlider;
 
 	float overallTimer;
 
@@ -85,7 +86,7 @@ public class CompetitiveController : MonoBehaviour
 	public void LivesTimer()
 	{
 		livesTimer -= Time.deltaTime;
-
+		timerSlider.value = livesTimer;
 		if (livesTimer <= 0f)
 		{
 
@@ -100,6 +101,7 @@ public class CompetitiveController : MonoBehaviour
 	{
 		life [lives - 1].color = new Color(0f,0f,0f,0f);
 		lives -= 1;
+		livesTimer = 10f;
 	}
 
 	public void GameOver()
