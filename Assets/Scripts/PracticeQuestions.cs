@@ -28,6 +28,8 @@ public class PracticeQuestions : MonoBehaviour
 	public int subMin;
 	public int multiMax;
 	public int multiMin;
+	public int divMax;
+	public int divMin;
 
 	//input fields
 	public InputField addMaxField;
@@ -36,6 +38,8 @@ public class PracticeQuestions : MonoBehaviour
 	public InputField subMinField;
 	public InputField multiMaxField;
 	public InputField multiMinField;
+	public InputField divMaxField;
+	public InputField divMinField;
 
 	//audio effects
 	public AudioSource audio;
@@ -69,6 +73,9 @@ public class PracticeQuestions : MonoBehaviour
 		int.TryParse(subMinField.text, out subMin);
 		int.TryParse(multiMaxField.text, out multiMax);
 		int.TryParse(multiMinField.text, out multiMin);
+		int.TryParse(divMaxField.text, out divMax);
+		int.TryParse(divMinField.text, out divMin);
+
 
 		//start the question
 		RandomType();
@@ -170,10 +177,10 @@ public class PracticeQuestions : MonoBehaviour
 	void Division()
 	{
 		//c = a/b - get the smaller number first(b) random.range
-		b = Random.Range(1,11);
+		b = Random.Range(divMin,divMax);
 
 		//a = b * random number to make the bigger number
-		a = b * Random.Range(1,11);
+		a = b * Random.Range(1,Mathf.FloorToInt(divMax/b)+2);
 
 		//c = a/b 
 		c = a / b;
