@@ -63,6 +63,9 @@ public class CompetitiveController : MonoBehaviour
 		//reset time
 		Time.timeScale = 1.0f;
 
+		//reset lives timer
+		livesTimer = 10f;
+
 		//get a new question
 		GetComponent<QuestionController> ().RandomType ();
 
@@ -85,12 +88,19 @@ public class CompetitiveController : MonoBehaviour
 
 	public void LivesTimer()
 	{
+		//timer
 		livesTimer -= Time.deltaTime;
+
+		//show on slider
 		timerSlider.value = livesTimer;
+
+		//if lives <=0
 		if (livesTimer <= 0f)
 		{
-
+			//TakeLife()
 			TakeLife ();
+
+			//Reset timer
 			livesTimer = 10f;
 
 		}
@@ -99,8 +109,13 @@ public class CompetitiveController : MonoBehaviour
 
 	public void TakeLife()
 	{
+		//disable a life image
 		life [lives - 1].color = new Color(0f,0f,0f,0f);
+
+		//take life
 		lives -= 1;
+
+		//reset timer
 		livesTimer = 10f;
 	}
 
